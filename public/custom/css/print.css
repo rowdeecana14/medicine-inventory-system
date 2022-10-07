@@ -1,0 +1,150 @@
+html {
+    height:90% /* quiriness of iframe used here */
+}
+body {
+    padding: 0px;
+    font-family: Calibri;
+    font-weight: bold;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    height:100%;
+}
+.text-center {
+    text-align: center;
+}
+table {
+    width: 100%;
+}
+table.print-content {
+    border: 1px solid black !important;
+    border-collapse: collapse !important;
+    margin-top: 50px;
+}
+table.print-content td {
+    padding: .2rem .4rem;
+    font-size: 12px;
+    vertical-align: top;
+    border: 1px solid black !important;
+}
+table.print-content th {
+    padding: .2rem .4rem;
+    font-size: 14px;
+    font-weight: bold;
+    vertical-align: top;
+    border: 1px solid black !important;
+}
+.header-table {
+    width: 100%;
+    font-size: 16px;
+    border: none !important;
+    margin-bottom: 30px;
+}
+.header-td-left img:first-child {
+    margin-left: 50px;
+}
+.header-left-logo {
+    height: 80px;
+    width: 80px;
+    display: inline-block;
+    margin-left: auto;
+}
+.header-right-logo {
+    float: right;
+    margin-right: 50px;
+    height: 80px;
+    width: 80px;
+}
+.header-title p {
+    padding: 0;
+    margin: 0;
+}
+.header-title {
+    text-align: center;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+}
+.btn-circle {
+    background: rgba(255, 255, 255, 1);
+    border-radius: 60px;
+    bottom: 100px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+    display: block;
+    color: #222;
+    font-size: 30px;
+    height: 60px;
+    line-height: 57.5px;
+    position: fixed;
+    right: 20px;
+    text-align: center;
+    transition: 0.3s ease;
+    -webkit-transition: 0.3s ease;
+    -moz-transition: 0.3s ease;
+    -ms-transition: 0.3s ease;
+    -o-transition: 0.3s ease;
+    width: 60px;
+    cursor: pointer;
+}
+.btn-circle-back {
+    background: rgba(255, 255, 255, 1);
+    border-radius: 60px;
+    bottom: 20px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+    display: block;
+    color: #222;
+    font-size: 30px;
+    height: 60px;
+    line-height: 57.5px;
+    position: fixed;
+    right: 20px;
+    text-align: center;
+    transition: 0.3s ease;
+    -webkit-transition: 0.3s ease;
+    -moz-transition: 0.3s ease;
+    -ms-transition: 0.3s ease;
+    -o-transition: 0.3s ease;
+    width: 60px;
+    cursor: pointer;
+}
+.dataTables_empty {
+    text-align: center !important;
+}
+.footer-table {
+    margin-top: 2cm;
+}
+.prepared-label {
+    font-size: 16px;
+}
+.prepared-by {
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+}
+.prepared-by div {
+    border-bottom: 1px solid black;
+    text-align: center;
+    width: 30%;
+    font-weight: bold;
+}
+.prepared-position {
+    font-size: 16px;
+    text-align: center;
+    font-weight: normal;
+}
+  
+@media print {
+    @page  {
+        margin-left: 50px;
+        margin-right: 50px;
+    }
+    
+    .btn-circle, .btn-circle-back { display: none; }
+    .content {
+        border: none;
+        height: 100%;
+    }
+}

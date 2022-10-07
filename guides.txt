@@ -1,0 +1,9 @@
+APPLICATION CREDENTIALS
+host: localhost
+username: root
+password: 
+database: mis
+
+USER CREDENTIALS
+username: admin
+password: admin
