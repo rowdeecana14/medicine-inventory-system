@@ -35,15 +35,26 @@
                             </div>
                             <div class="form-group">
                                 <label for="username">Username <span class="required-label">*</span></label>
-                                <input type="text" class="form-control input" id="username" name="username" placeholder="" required>
+                                <input type="text" class="form-control input" id="edit_username" name="username" placeholder="" required>
                             </div>
                             <div class="form-group">
                                 <label for="edit_password">Password <span class="required-label">*</span></label>
-                                <input type="password" class="form-control" id="edit_password" name="password" placeholder="" >
+                                <div class="input-group">
+                                    <input type="password" class="form-control" id="edit_password" name="password" placeholder="" autocomplete="">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text fa fa-eye password-visibility" onclick="showHide(this, '#edit_password')"></span>
+                                    </div>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label for="confirm_password">Confirm Password <span class="required-label">*</span></label>
-                                <input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="" >
+                                <div class="input-group">
+                                    <input type="password" class="form-control" id="edit_confirm_password" name="confirm_password" placeholder="" autocomplete="">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text fa fa-eye password-visibility" onclick="showHide(this, '#edit_confirm_password')"></span>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>

@@ -30,11 +30,21 @@
                             </div>
                             <div class="form-group">
                                 <label for="password">Password <span class="required-label">*</span></label>
-                                <input type="password" class="form-control" id="password" name="password" placeholder="" required>
+                                <div class="input-group">
+                                    <input type="password" class="form-control" id="password" name="password" placeholder="" required autocomplete=""> 
+                                    <div class="input-group-append">
+                                        <span class="input-group-text fa fa-eye password-visibility" onclick="showHide(this, '#password')"></span>
+                                    </div>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label for="confirm_password">Confirm Password <span class="required-label">*</span></label>
-                                <input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="" required>
+                                <div class="input-group">
+                                    <input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="" required autocomplete="">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text fa fa-eye password-visibility"  onclick="showHide(this, '#confirm_password')"></span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

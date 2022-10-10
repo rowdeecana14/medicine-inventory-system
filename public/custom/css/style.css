@@ -178,6 +178,19 @@ textarea {
 .color-purple {
     color: #6861ce !important;
 }
+.has-success .input-group-text  {
+    border-color: #2f7e32  !important;
+    background: none !important;
+    color: #2f7e32 !important;
+}
+.input-group-text {
+    border-color: #495057  !important;
+}
+.has-error .input-group-text {
+    border-color: #F25961 !important;
+    background: none !important;
+    color: #F25961 !important;
+}
 @media (min-width: 768px) {
     .modal-xl {
         width: 75%;

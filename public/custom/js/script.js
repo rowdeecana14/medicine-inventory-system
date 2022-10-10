@@ -159,6 +159,19 @@ $(document).on("click", ".logout", async function() {
     }
 });
 
+function showHide(btn_id, input_id) {
+
+    $(btn_id).toggleClass("fa-eye fa-eye-slash");
+    $(input_id).focus();
+
+    if ($(input_id).attr("type") == "password") {
+        $(input_id).attr("type", "text");
+    } 
+    else {
+        $(input_id).attr("type", "password");
+    }
+}
+
 async function  deleteConfirmation() {
     return await swal({
         title: 'Are you sure?',

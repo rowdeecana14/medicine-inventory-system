@@ -84,15 +84,30 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="current_password">Current Password <span class="required-label">*</span></label>
-                                                <input type="password" class="form-control required" id="current_password" name="current_password" aria-invalid="false" autocomplete >
+                                                <div class="input-group ">
+                                                    <input type="password" class="form-control required" id="current_password" name="current_password" aria-invalid="false" autocomplete >
+                                                    <div class="input-group-append">
+                                                        <span class="input-group-text fa fa-eye password-visibility" onclick="showHide(this, '#current_password')"></span>
+                                                    </div>
+                                                </div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="password">New Password <span class="required-label">*</span></label>
-                                                <input type="password" class="form-control required" id="password" name="password" aria-invalid="false" autocomplete > 
+                                                <div class="input-group">
+                                                    <input type="password" class="form-control required" id="password" name="password" aria-invalid="false" autocomplete > 
+                                                    <div class="input-group-append">
+                                                        <span class="input-group-text fa fa-eye password-visibility" onclick="showHide(this, '#password')"></span>
+                                                    </div>
+                                                </div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="confirm_password">Confirm Password <span class="required-label">*</span></label>
-                                                <input type="password" class="form-control required" id="confirm_password" name="confirm_password" autocomplete >
+                                                <div class="input-group">
+                                                    <input type="password" class="form-control required" id="confirm_password" name="confirm_password" autocomplete >
+                                                    <div class="input-group-append">
+                                                        <span class="input-group-text fa fa-eye password-visibility" onclick="showHide(this, '#confirm_password')"></span>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </form>
                                         <div class="mt-3 mb-5 ml-2 mr-2">
