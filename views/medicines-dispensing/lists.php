@@ -8,7 +8,7 @@
                 <th>Total Items</th>
                 <th>Patient</th>
                 <th>Health Official</th>
-                <th>Date Dispenced</th>
+                <th>Date Dispensed</th>
                 <th>Action</th>
             </tr>
         </thead>

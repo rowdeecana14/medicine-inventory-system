@@ -180,18 +180,33 @@ class PatientController extends BaseController {
 
     public function store($request) {
         $file = '';
+        $patientModel = new PatientModel;
+        $fullname = strtolower($request->first_name." ".$request->middle_name." ".$request->last_name);
+        
+        $data = Helper::allowOnly((array) $request, [
+            'first_name', 'middle_name', 'last_name', 'national_id', 'philhealth_member', 'person_disability_id',
+            'gender_id', 'birth_date', 'position_id', 'civil_status_id', 'citizenship_id', 'weight',
+            'height', 'blood_type_id', 'educational_attainment_id', 'educational_attainment_id', 'email', 'contact_no',
+            'baranggay_id', 'purok_id', 'street_building_house'
+        ]);
+
+        if(!$patientModel->isUniqueName($fullname)) {
+            return [
+                "success" => false,
+                "message" => "Patient name is already exist."
+            ];
+        }
 
         if($request->image_to_upload != '') {
             $path = Helper::uploadedPatientPath();
             $file = Helper::uploadImage($request->image_to_upload, $path);
         }
-
-        $patientModel = new PatientModel;
-        $data = Helper::unsets((array) $request, ['module', 'action', 'csrf_token', 'profileimg', 'image', 'image_to_upload']);
-        $data['birth_date'] = Helper::dateParser($data['birth_date']); 
-        $data['created_by'] = $this->auth->id;
-        $data['image'] = isset($request->image_to_upload) & $request->image_to_upload != null ? $file : null;
-        $patient_id =  $patientModel->lastInsertId($data);
+        
+        $patient_id =  $patientModel->lastInsertId(array_merge($data, [
+            'birth_date' =>  Helper::dateParser($data['birth_date']),
+            'created_by' => $this->auth->id,
+            'image' => isset($request->image_to_upload) & $request->image_to_upload != null ? $file : null
+        ]));
 
         $log = new LogModel;
         $log->store([
@@ -492,17 +507,33 @@ class PatientController extends BaseController {
 
     public function update($request) {
         $file = '';
+        $patientModel = new PatientModel;
+
+        $data = Helper::allowOnly((array) $request, [
+            'first_name', 'middle_name', 'last_name', 'national_id', 'philhealth_member', 'person_disability_id', 
+            'gender_id', 'birth_date', 'position_id', 'civil_status_id', 'citizenship_id', 'weight',
+            'height', 'blood_type_id', 'educational_attainment_id', 'educational_attainment_id', 'email', 'contact_no',
+            'baranggay_id', 'purok_id', 'street_building_house', 'id'
+        ]);
+        $data = array_merge($data, [
+            'birth_date' => Helper::dateParser($data['birth_date']),
+            'updated_by' => $this->auth->id,
+            'updated_at' => date('Y-m-d H:i:s')
+        ]);
+
+        $fullname = strtolower($request->first_name." ".$request->middle_name." ".$request->last_name);
+
+        if(!$patientModel->isUniqueName($fullname, $request->id)) {
+            return [
+                "success" => false,
+                "message" => "Patient name is already exist."
+            ];
+        }
 
         if($request->image_to_upload != '') {
             $path = Helper::uploadedPatientPath();
             $file = Helper::uploadImage($request->image_to_upload, $path);
         }
-
-        $patientModel = new PatientModel;
-        $data = Helper::unsets((array) $request,  ['module', 'action', 'csrf_token', 'profileimg', 'image', 'image_to_upload']);
-        $data['birth_date'] = Helper::dateParser($data['birth_date']); 
-        $data['updated_by'] =  $this->auth->id;
-        $data['updated_at'] = date('Y-m-d H:i:s');
 
         if($request->image_to_upload != '') {
             $data['image'] = $file;

@@ -548,12 +548,17 @@ $(document).ready(function(){
         let response = await Api.store(serialize(form))
 
         if(response.success) {
-            formReset($('#basic_info_form_edit'));
-            formReset($('#other_info_form_edit'));
-            resetTabs(tab_list, action_type);
+            if(response.data.success) {
+                formReset($('#basic_info_form_edit'));
+                formReset($('#other_info_form_edit'));
+                resetTabs(tab_list, action_type);
 
-            updateMessage(`${module_label} successfully updated.`);
-            preloadTable();
+                updateMessage(`${module_label} successfully updated.`);
+                preloadTable();
+            }
+            else {
+                errorMessageModal(response.data.message);
+            }
         }
         else {
             serverError();
@@ -619,12 +624,18 @@ $(document).ready(function(){
         let response = await Api.store(serialize(form))
 
         if(response.success) {
-            formReset($('#basic_info_form'));
-            formReset($('#other_info_form'));
-            resetTabs(tab_list, action_type);
-            
-            saveMessage(`${module_label} successfully saved.`);
-            preloadTable();
+            if(response.data.success) {
+                formReset($('#basic_info_form'));
+                formReset($('#other_info_form'));
+                resetTabs(tab_list, action_type);
+                
+                saveMessage(`${module_label} successfully saved.`);
+                preloadTable();
+
+            }
+            else {
+                errorMessageModal(response.data.message);
+            }
         }
         else {
             serverError();

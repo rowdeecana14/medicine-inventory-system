@@ -358,9 +358,14 @@ $(document).ready(function(){
         let response = await Api.store(serialize(form))
 
         if(response.success) {
-            formReset($('#create-form'));
-            saveMessage(`${module_label} successfully saved.`);
-            preloadTable();
+            if(response.data.success) {
+                formReset($('#create-form'));
+                saveMessage(`${module_label} successfully saved.`);
+                preloadTable();
+            }
+            else {
+                errorMessageModal(response.data.message);
+            }
         }
         else {
             serverError();
@@ -393,9 +398,14 @@ $(document).ready(function(){
         let response = await Api.update(serialize(form));
 
         if(response.success) {
-            formReset($('#edit-form'));
-            updateMessage(`${module_label} successfully updated.`);
-            preloadTable();
+            if(response.data.success) {
+                formReset($('#edit-form'));
+                updateMessage(`${module_label} successfully updated.`);
+                preloadTable();
+            }
+            else {
+                errorMessageModal(response.data.message);
+            }
         }
         else {
             serverError();

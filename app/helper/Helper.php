@@ -2,6 +2,19 @@
 namespace App\Helper;
 
 class Helper {
+
+    public static function trim($request=[], $fields=[] ) {
+        $data = [];
+
+        foreach($request as $key => $value) {
+            if(in_array($key, $fields)) {
+                $data[$key] = trim($value);
+            }
+        }
+
+        return $data;
+    }
+    
     public static function unsets($data, $fields) {
         foreach($fields as $field) {
             unset($data[$field]);
@@ -15,7 +28,12 @@ class Helper {
 
         foreach($request as $key => $value) {
             if(in_array($key, $fields)) {
-                $data[$key] = $value;
+                if(gettype($value) == 'string') {
+                    $data[$key] = trim($value);
+                }
+                else {
+                    $data[$key] = $value;
+                }
             }
         }
 

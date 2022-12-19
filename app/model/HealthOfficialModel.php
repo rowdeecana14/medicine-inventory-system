@@ -48,6 +48,27 @@ class HealthOfficialModel extends BaseModel {
 
         return $this->statement ->fetchAll();
     }
+
+    public function isUniqueName($fullname = "", $id="") {
+        if($id != '') {
+            $sql = "SELECT *  FROM ".self::$table." 
+            WHERE TRIM(CONCAT(LOWER(first_name),' ', LOWER(middle_name), ' ', LOWER(last_name)))=:fullname 
+            AND id !=:id AND deleted_by IS NULL
+            ";
+            $statement = self::connection()->prepare($sql);
+            $statement->bindValue(':fullname', $fullname);
+            $statement->bindValue(':id', $id);
+        }
+        else {
+            $sql = "SELECT *  FROM ".self::$table." WHERE TRIM(CONCAT(LOWER(first_name),' ', LOWER(middle_name), ' ', LOWER(last_name)))=:fullname  AND deleted_by IS NULL";
+            $statement = self::connection()->prepare($sql);
+            $statement->bindValue(':fullname', $fullname);
+        }
+
+        $statement->execute();
+
+        return ($statement->rowCount() == 0) ? true : false;
+    }
 }
 
 ?>

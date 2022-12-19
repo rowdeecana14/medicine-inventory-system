@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Medicine Dispencing Report - <?= app_code() ?></title>
+	<title>Medicine Dispensing Report - <?= app_code() ?></title>
 	<?php include_once('../layouts/header.php'); ?>
 </head>
 <body>
@@ -37,7 +37,7 @@
 								<div class="card-header">
 
 									<div class="d-flex align-items-center">
-										<h4 class="card-title"><i class="fas fa-arrow-circle-right pr-1"></i> Medicine Dispencing Report</h4>
+										<h4 class="card-title"><i class="fas fa-arrow-circle-right pr-1"></i> Medicine Dispensing Report</h4>
 										<button class="btn btn-primary btn-round ml-auto btn-filter" >
 											<i class="fas fa-filter pr-1"></i>
 											Filter 

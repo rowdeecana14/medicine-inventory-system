@@ -120,6 +120,7 @@ table.print-content th {
     font-size: 16px;
 }
 .prepared-by {
+    width: 100%;
     font-size: 16px;
     display: flex;
     justify-content: center;
@@ -127,7 +128,7 @@ table.print-content th {
 .prepared-by div {
     border-bottom: 1px solid black;
     text-align: center;
-    width: 30%;
+    width: 60%;
     font-weight: bold;
 }
 .prepared-position {

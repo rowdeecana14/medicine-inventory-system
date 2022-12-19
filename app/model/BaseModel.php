@@ -399,7 +399,6 @@ abstract class BaseModel {
 		return $statement;
 	}
 
-
     protected function bindBuilder($statement, $data) {
 		$fields = array_keys($data);
 		$values = array_values($data);

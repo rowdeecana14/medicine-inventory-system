@@ -22,7 +22,7 @@ $(document).ready(function(){
                 titleAttr: 'Copy'
             },
             {
-                title: 'MEDICINE DISPENCING REPORTS',
+                title: 'MEDICINE DISPENSING REPORTS',
                 extend:    'excelHtml5',
                 text:      '<i class="fa fa-file-excel pr-1"></i> Excel',
                 titleAttr: 'Excel',
@@ -31,7 +31,7 @@ $(document).ready(function(){
                 extend:    'print',
                 text:      '<i class="fa fa-print pr-1"> </i> Print',
                 action: function ( e, dt, node, config ) {
-                    loadPrintWindow($('.table-main'), 'MEDICINE DISPENCING REPORTS', auth_user);
+                    loadPrintWindow($('.table-main'), 'MEDICINE DISPENSING REPORTS', auth_user);
                 }
             },
         ],

@@ -29,7 +29,7 @@ class PatientModel extends BaseModel {
        return self::$order_by;
    }
 
-    public function transactions($id) {
+  public function transactions($id) {
       $this->sql = "
           SELECT 
           st.transaction_no, st.type,
@@ -56,6 +56,27 @@ class PatientModel extends BaseModel {
       $this->statement->execute();
 
       return $this->statement ->fetchAll();
+  }
+
+  public function isUniqueName($fullname = "", $id="") {
+    if($id != '') {
+      $sql = "SELECT *  FROM ".self::$table." 
+        WHERE CONCAT(LOWER(first_name),' ', LOWER(middle_name), ' ', LOWER(last_name))=:fullname 
+        AND id !=:id AND deleted_by IS NULL
+      ";
+      $statement = self::connection()->prepare($sql);
+      $statement->bindValue(':fullname', $fullname);
+      $statement->bindValue(':id', $id);
+    }
+    else {
+      $sql = "SELECT *  FROM ".self::$table." WHERE CONCAT(LOWER(first_name),' ', LOWER(middle_name), ' ', LOWER(last_name))=:fullname  AND deleted_by IS NULL";
+      $statement = self::connection()->prepare($sql);
+      $statement->bindValue(':fullname', $fullname);
+    }
+    
+    $statement->execute();
+
+    return ($statement->rowCount() == 0) ? true : false;
   }
 }
 

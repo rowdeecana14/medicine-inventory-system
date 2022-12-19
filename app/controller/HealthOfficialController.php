@@ -174,20 +174,32 @@ class HealthOfficialController extends BaseController {
     
     public function store($request) {
         $file = '';
+        $healthOfficialModel = new HealthOfficialModel;
+        $fullname = strtolower($request->first_name." ".$request->middle_name." ".$request->last_name);
+        
+        $data = Helper::allowOnly((array) $request, [
+            'first_name', 'middle_name', 'last_name', 'suffix', 'gender_id', 'license_no',
+            'position_id', 'birth_date', 'civil_status_id', 'email', 'contact_no', 'baranggay_id',
+            'purok_id', 'street_building_house'
+        ]);
+
+        if(!$healthOfficialModel->isUniqueName($fullname)) {
+            return [
+                "success" => false,
+                "message" => "Health official name is already exist."
+            ];
+        }
 
         if($request->image_to_upload != '') {
             $path = Helper::uploadedHealthOfficialPath();
             $file = Helper::uploadImage($request->image_to_upload, $path);
         }
-        else {
-            // $file = $request->gender_id === 1
-        }
-        $healthOfficialModel = new HealthOfficialModel;
-        $data = Helper::unsets((array) $request, ['module', 'action', 'csrf_token', 'profileimg', 'image', 'image_to_upload']);
-        $data['birth_date'] = Helper::dateParser($data['birth_date']); 
-        $data['created_by'] = $this->auth->id;
-        $data['image'] = isset($request->image_to_upload) & $request->image_to_upload != null ? $file : null;
-        $health_official_id =  $healthOfficialModel->lastInsertId($data);
+       
+        $health_official_id =  $healthOfficialModel->lastInsertId(array_merge($data, [
+            'birth_date' =>  Helper::dateParser($data['birth_date']),
+            'created_by' => $this->auth->id,
+            'image' => isset($request->image_to_upload) & $request->image_to_upload != null ? $file : null
+        ]));
 
         $log = new LogModel;
         $log->store([
@@ -445,18 +457,32 @@ class HealthOfficialController extends BaseController {
 
     public function update($request) {
         $file = '';
+        $healthOfficialModel = new HealthOfficialModel;
+        $fullname = strtolower($request->first_name." ".$request->middle_name." ".$request->last_name);
+
+        $data = Helper::allowOnly((array) $request, [
+            'first_name', 'middle_name', 'last_name', 'suffix', 'gender_id', 'license_no',
+            'position_id', 'birth_date', 'civil_status_id', 'email', 'contact_no', 'baranggay_id',
+            'purok_id', 'street_building_house'
+        ]);
+
+        if(!$healthOfficialModel->isUniqueName($fullname)) {
+            return [
+                "success" => false,
+                "message" => "Health official name is already exist."
+            ];
+        }
 
         if($request->image_to_upload != '') {
             $path = Helper::uploadedHealthOfficialPath();
             $file = Helper::uploadImage($request->image_to_upload, $path);
         }
 
-        $healthOfficialModel = new HealthOfficialModel;
-        $data = Helper::unsets((array) $request,  ['module', 'action', 'csrf_token', 'profileimg', 'image', 'image_to_upload']);
-        $data['birth_date'] = Helper::dateParser($data['birth_date']); 
-        $data['updated_by'] = $this->auth->id;
-        $data['updated_at'] = date('Y-m-d H:i:s');
-        $data['updated_at'] = date('Y-m-d H:i:s');
+        $data = array_merge($data, [
+            'birth_date' => Helper::dateParser($data['birth_date']),
+            'updated_by' => $this->auth->id,
+            'updated_at' => date('Y-m-d H:i:s')
+        ]);
 
         if($request->image_to_upload != '') {
             $data['image'] = $file;

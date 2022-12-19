@@ -12,7 +12,7 @@
                 <th>Quantity</th>
                 <th>Health Official</th>
                 <th>Patient</th>
-                <th>Date Dispenced</th>
+                <th>Date Dispensed</th>
             </tr>
         </thead>
         <tbody>

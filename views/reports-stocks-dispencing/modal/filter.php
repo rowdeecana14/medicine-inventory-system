@@ -24,7 +24,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="dispenced_at">Date Dispenced</label>
+                                <label for="dispenced_at">Date Dispensed</label>
                                 <input type="text" class="form-control datepicker" id="dispenced_at" name="dispenced_at">
                             </div>
 
