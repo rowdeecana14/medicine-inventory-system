@@ -81,7 +81,7 @@
                               <b id="date"></b>
                               <b id="timer"></b>
                             </h4>
-                          <img id="default_logo" src="public/assets/img/config/escalante-lg.png" width="200px" height="20%">
+                          <img id="default_logo" src="public/assets/img/config/mis-lg.png" width="200px" height="20%">
                         </center>
                       </div>
                     </div>

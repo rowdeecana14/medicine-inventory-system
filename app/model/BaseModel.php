@@ -5,8 +5,8 @@ use PDO;
 abstract class BaseModel {
     
     private static $hostname = 'localhost';
-    private static $username = 'root';
-    private static $password = '';
+    private static $username = 'id22326091_mis';
+    private static $password = '000webhost@MIS';
     private static $databaseName = 'mis';
     private static $dsn = '';
     private $connection = null;

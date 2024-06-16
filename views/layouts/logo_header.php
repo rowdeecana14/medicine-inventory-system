@@ -1,7 +1,7 @@
 <div class="logo-header" data-background-color="blue2">
 				
     <a href="../dashboard/" class="logo">
-        <img src="../../public/assets/img/config/escalante.png" alt="navbar brand" class="navbar-brand" style="height: 50px;"> <span class="text-light ml-2 fw-bold" style="font-size:20px">MIS</span>
+        <img src="../../public/assets/img/config/mis-sm.png" alt="navbar brand" class="navbar-brand" style="height: 50px;"> <span class="text-light ml-2 fw-bold" style="font-size:20px">MIS</span>
      </a>
     </a>
     <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">

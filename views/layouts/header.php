@@ -1,6 +1,6 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
-<link rel="icon" href="../../public/assets/img/config/escalante.png">
+<link rel="icon" href="../../public/assets/img/config/mis-sm.png">
 
 <!-- Fonts and icons -->
 <script src="../../public/assets/js/plugin/webfont/webfont.min.js"></script>

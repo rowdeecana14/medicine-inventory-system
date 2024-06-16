@@ -1,6 +1,6 @@
 <?php
     session_start();
-    define("APP_BASE_URL", "http://localhost/medicine-inventory-system");
+    define("APP_BASE_URL", "http://localhost/mis");
     define("APP_CODE", "MIS");
     define("APP_VERSION", "1.0");
     define("APP_NAME", "medicine-inventory-system");
