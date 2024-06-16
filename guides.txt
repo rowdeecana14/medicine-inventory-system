@@ -1,4 +1,4 @@
-APPLICATION CREDENTIALS
+DB CREDENTIALS
 host: localhost
 username: root
 password: 
